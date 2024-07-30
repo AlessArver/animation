@@ -1,0 +1,133 @@
+@import '../../shared/styles/_breakpoints'
+
+.container
+    max-height: 100vh
+    width: 100%
+    height: 100%
+    margin: auto
+    display: flex
+    justify-content: center
+    align-items: center  
+    position: relative
+    
+.image 
+    margin: 0 20px 0 20px
+    max-height: 450px
+    max-width: 450px
+    height: 450px
+    width: 100%
+    background-color: #000
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    border-radius: 20px
+    box-shadow: inset 0 0 35px 25px #000, 0 0 20px 10px #000
+
+
+.arrow
+    background-image: url('https://i.pinimg.com/564x/9d/01/f6/9d01f66e448c02514d599d051ef45721.jpg')
+    background-size: cover
+    background-repeat: no-repeat 
+    background-position: center
+    width: 65px
+    height: 50px
+    border-radius: 20px
+    cursor: pointer
+    z-index: 1
+
+    @media (max-width: $breakpoint-tablet-small)
+        width: 32px
+        height: 40px
+
+.arrowLeft
+    animation-name: arrow-left
+    animation-duration: 1s
+    animation-iteration-count: infinite
+    animation-direction: alternate
+
+    @keyframes arrow-left
+        0%
+            transform: translateX(0) scale(1.5)
+            
+        100%
+            transform: translateX(-30px) scale(1.5)
+
+    &:hover
+        animation: none
+        transform: scale(1.5)
+
+.arrowRight
+    animation-name: arrow-right
+    animation-duration: 1s
+    animation-iteration-count: infinite
+    animation-direction: alternate-reverse
+
+    @keyframes arrow-right
+        0%
+            transform: translateX(0) scale(-1.5)
+            
+        100%
+            transform: translateX(30px) scale(-1.5)
+
+    &:hover
+        animation: none
+        transform: scale(-1.5)
+
+
+@function particles($max)
+  $val: random(3000)+px random(3000)+px rgba(255, 252, 92, 0.9)
+  @for $i from 1 through $max
+    $val: #{$val}, random(3000)+px random(3000)+px 3px 1px rgba(255, 238, 0, 0.9)
+  @return $val
+
+.particlesWrapper
+    max-width: 100vw
+    max-height: 100%
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 0
+    overflow: hidden
+
+.particlesContainer
+    width: 520px
+    height: 700px
+    overflow: hidden
+
+    @media (max-width: $breakpoint-tablet-large)
+        width: 350px
+
+.particles
+    height: 1px
+    width: 1px 
+    animation: particles 10s linear infinite
+    border-radius: 50%
+
+    @keyframes particles
+        from 
+            box-shadow: particles(1500)
+        to 
+            width: 1.5px
+            height: 1.5px
+            box-shadow: particles(1500)
+
+    @media (max-width: $breakpoint-tablet-large)   
+        @keyframes particles 
+            from 
+                box-shadow: particles(1000)
+            to 
+                width: 1.5px
+                height: 1.5px
+                box-shadow: particles(1000)
+
+
+.PortalVideoWrapper
+    width: 100%
+    max-width: 475px
+    height: 100%
+    position: relative
